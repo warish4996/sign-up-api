@@ -1,15 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const url = 'mongodb://localhost/formData'
+const url = 'mongodb+srv://formuser:formuser@cluster0.5wxkc.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 const app = express()
 
-mongoose.connect(url,{useNewUrlParser:true})
-const con =mongoose.connection
+const  connectDb = async ()=>{
+    await mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology: true})
+    console.log('connected..')
+}
 
-con.on('open',()=>{
-    console.log('connected...')
-})
+connectDb();
+
+
 
 app.use(express.json())
 
