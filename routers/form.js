@@ -38,7 +38,7 @@ router.post('/',async(req,res)=>{
       const fr = await form.save()
       res.json(fr)
     }catch(err){
-        res.send('Error')
+        res.send(err)
     }
 })
 
